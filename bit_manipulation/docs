@@ -1,0 +1,83 @@
+Left shift operators :
+
+Syntax :
+
+A << x
+What does A « x mean :
+
+A << x implies shifting the bits of A to the left by x positions.
+The first x bits are lost this way. The last x bits have 0. Example : lets say
+
+                A = 29 ( 11101 ) and x = 2,
+                so A << 2 means
+                     0 0 1 1 1 0 1 << 2
+                     =============  ------> this sequence of digit shifts to the
+                                            left by 2 positions
+                    ----------------
+                     1 1 1 0 1 0 0  = 116
+A << x is equal to multiplication by pow(2, x). Think why.
+1 << x is equal to pow(2, x).
+
+-------------------------------------------------------
+
+x & (x-1) will clear the lowest set bit of x
+x & ~(x-1) extracts the lowest set bit of x (all others are clear).
+           Pretty patterns when applied to a linear sequence.
+x & (x + (1 << n)) = x, with the run of set bits (possibly length 0) starting at
+                        bit n cleared.
+x & ~(x + (1 << n)) = the run of set bits (possibly length 0) in x,
+                      starting at bit n.
+x | (x + 1) = x with the lowest cleared bit set.
+x | ~(x + 1) = extracts the lowest cleared bit of x (all others are set).
+x | (x - (1 << n)) = x, with the run of cleared bits (possibly length 0)
+                        starting at bit n set.
+x | ~(x - (1 << n)) = the lowest run of cleared bits (possibly length 0) in x,
+                      starting at bit n are the only clear bits.
+
+-------------------------------------------------------
+
+a      b      a | b
+------------------------
+0      0         0
+0      1         1
+1      0         1
+1      1         1
+
+A = 21 ( 10101 ) and B = 6  ( 110 )
+       A | B =
+                        1 0 1 0 1
+                    |   0 0 1 1 0
+                    ------------------
+                        1 0 1 1 1  =  23.
+
+-------------------------------------------------------
+
+a      b         a & b
+------------------------
+0      0         0
+0      1         0
+1      0         0
+1      1         1
+
+ A = 21 ( 10101 ) and B = 6  ( 110 )
+       A & B =
+                        1 0 1 0 1
+                    &   0 0 1 1 0
+                    ------------------
+                        0 0 1 0 0  =  4.
+
+-------------------------------------------------------
+
+a      b      a ^ b
+------------------------
+0      0         0
+0      1         1
+1      0         1
+1      1         0
+
+A = 21 ( 10101 ) and B = 6  ( 110 )
+       A ^ B =
+                        1 0 1 0 1
+                    ^   0 0 1 1 0
+                    ------------------
+                        1 0 0 1 1  =  19.
