@@ -9,11 +9,11 @@ class Solution:
 
         arr = [i for i in range(1, A + 1)]
         ans = ""
-        while (arr):
+        while arr:
             index = B // (math.factorial(len(arr) - 1))  # by doing this we find our 1st element of kth
             # permutation i.e from which block our 1st element belongs to
 
-            if (B % (math.factorial(len(arr) - 1)) == 0):
+            if B % (math.factorial(len(arr) - 1)) == 0:
                 index -= 1
             ans += str(arr[index])  # then we add element into string
 
@@ -21,7 +21,7 @@ class Solution:
             # we have to obtain another element of kth permutation
 
             arr.remove(arr[index])  # removing element which has been used
-        return (ans)
+        return ans
 
 
 if __name__ == '__main__':

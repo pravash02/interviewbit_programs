@@ -2,6 +2,7 @@ class Solution:
     @staticmethod
     def trailing_zero(A):
         b = bin(A)
+        # print(b[::-1])
         count = 0
         for i in b[::-1]:
             if i == '0':

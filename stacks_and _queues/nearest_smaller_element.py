@@ -46,8 +46,24 @@ class Solution:
             s.append(A[i])
         return G
 
+    @staticmethod
+    def solveD(A):
+        stack = []
+        smallest = 0
+        for i in range(len(A)):
+            if A[i] > A[smallest]:
+                for j in range(i):
+                    if A[j] < A[i]:
+                        stack.append(A[smallest])
+                        break
+            else:
+                stack.append(-1)
+                smallest = i
+        print(stack)
+
 
 if __name__ == '__main__':
     s = Solution
     A = [4, 5, 2, 10, 8]
     print(s.solveC(A))
+    print(s.solveD(A))

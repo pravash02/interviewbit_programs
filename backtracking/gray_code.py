@@ -1,7 +1,7 @@
 class Solution:
     @staticmethod
     def solve(A):
-        if (A == 1):
+        if A == 1:
             return [0, 1]
         else:
             ans = Solution.solve(A - 1)
