@@ -44,4 +44,4 @@ if __name__ == '__main__':
     bt.root.right.left = TreeNode(6)
     bt.root.right.right = TreeNode(7)
 
-    print(bt.solveB())
+    print(bt.solveA(bt.root))

@@ -1,3 +1,6 @@
+from pandas._libs.interval import Interval
+
+
 class Solution:
     @staticmethod
     def merge_ovrlp(A):
@@ -18,6 +21,32 @@ class Solution:
 
             i += 1
         return new_interval
+
+    @staticmethod
+    def merge_ovrlp2(intervals):
+        if (len(intervals) == 0):
+            return intervals
+
+        intervals.sort(key=lambda x: x.start)
+
+        m = Interval(intervals[0].start, intervals[0].end)
+
+        res = []
+        i = 1
+
+        while (i < len(intervals)):
+
+            if (m.end >= intervals[i].start):
+                m.end = max(m.end, intervals[i].end)
+                i += 1
+
+            else:
+                res.append(m)
+                m = Interval(intervals[i].start, intervals[i].end)
+                i += 1
+
+        res.append(m)
+        return res
 
 
 if __name__ == '__main__':
