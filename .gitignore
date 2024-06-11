@@ -7,8 +7,7 @@ __pycache__/
 *.so
 
 # idea
-*.idea
-*.xml
+/.idea
 
 # Distribution / packaging
 .Python
